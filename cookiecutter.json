@@ -1,0 +1,10 @@
+{
+    "directory_name": "nome_da_analise",
+    "username": "Quem ta fazendo a analise?",
+    "squad": "Qual(is) Squads essa analise atende?",
+    "objective":"Por que está fazendo essa analise?"
+    ,"_copy_without_render": [
+        "*.js",
+        "sql/*"
+    ]
+}
