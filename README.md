@@ -1,7 +1,7 @@
 # cc-crispdm
 ## First version of CRISP-DM template using cookie-cutter
 
-#### [Project at](https://github.com/t4kesh/cc-crispdm)
+#### [Project at](https://github.com/apolotakeshi/cc-crispdm)
 
 ### Requirements to use the cookiecutter template:
 -----------
@@ -22,7 +22,7 @@ $ conda install cookiecutter
 ### To start a new project using this template, run:
 ------------
 
-    cookiecutter https://github.com/t4kesh/cc-crispdm.git
+    cookiecutter https://github.com/apolotakeshi/cc-crispdm.git
 
 ### The resulting directory structure
 ------------
