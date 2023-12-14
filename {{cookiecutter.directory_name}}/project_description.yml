@@ -1,6 +1,6 @@
-#Docs
+version: 2
 
-analisis:
+analysis:
     - objective : {{cookiecutter.objective}}
     - analyst: {{cookiecutter.username}}
     - squad: {{cookiecutter.squad}}
