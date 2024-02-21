@@ -30,13 +30,13 @@ def get_data(query : str, save_file : str, return_result : bool = True):
         >>> get_data(query2, file_name2, return_result=False)
         # Executa a consulta, salva o resultado em "contagem.csv" e não retorna o DataFrame.
     '''
-    df = read_gbq(query)
+    df = read_gbq(query, project_id='everest-bigquery')
     df.to_csv(save_file, index = False)
     if return_result: return df
 
 def sql_query(query_file : str, return_result : bool = True,
               update_result : bool = True, output_path : str = '../data/raw/',
-              compiled_path : str = '../sql/'):
+              query_path : str = '../sql/'):
     '''
     Executa uma consulta (query) armazenada em um arquivo, podendo salvar o resultado em um arquivo CSV
     e/ou retornar o DataFrame resultante.
@@ -51,8 +51,8 @@ def sql_query(query_file : str, return_result : bool = True,
                                         O valor padrão é True.
         output_path (str, opcional): O caminho para a pasta onde o resultado será salvo.
                                      O valor padrão é '../data/raw/'.
-        compiled_path (str, opcional): O caminho para a pasta contendo os arquivos com as queries.
-                                       O valor padrão é '../sql/'.
+        query_path (str, opcional): O caminho para a pasta contendo os arquivos com as queries.
+                                    O valor padrão é '../sql/'.
 
     Returns:
         pandas.DataFrame or None: Se return_result for True, a função retornará o DataFrame
@@ -71,9 +71,7 @@ def sql_query(query_file : str, return_result : bool = True,
         # "../data/output/nome_do_arquivo_da_query.csv" apenas se o arquivo ainda não existir, e não retorna o DataFrame.
     '''
 
-    analysis = os.getcwd().split('/')[-2]
     if '/' in query_file: query_file = query_file.split('/')[-1]
-    query_path = compiled_path + f'{analysis}/sql/'
     query_file = query_path + query_file
     save_file = query_file.replace(query_path, '').replace('.sql', '.csv')
 
