@@ -3,6 +3,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 from pandas import read_gbq, read_csv
+from plotly.graph_objects import Figure
 
 def get_data(query : str, save_file : str, return_result : bool = True):
     '''
@@ -84,6 +85,27 @@ def sql_query(query_file : str, return_result : bool = True,
 
     if return_result: return get_data(query, save_file, True)
     else: get_data(query, save_file, False)
+
+def show_fig(fig : Figure, static : bool = False):
+    '''
+    Exibe um gráfico do Plotly. Ideal para exibir gráficos de modo visualizável no GitHub.
+
+    Args:
+        fig (plotly.graph_objects.Figure): O gráfico a ser exibido.
+        static (bool, opcional): Indica se o gráfico deve ser exibido em formato estático.
+                                 O valor padrão é False.
+
+    Exemplo:
+        >>> import plotly.graph_objects as go
+        >>> fig = go.Figure(data = go.Scatter(x = [1, 2, 3], y = [4, 5, 6]))
+        >>> show_fig(fig)
+        # Exibe o gráfico normalmente, permitindo interação.
+
+        >>> fig2 = go.Figure(data = go.Scatter(x = [1, 2, 3], y = [4, 5, 6]))
+        >>> show_fig(fig2, static = True)
+        # Exibe o gráfico em formato estático, ideal para exibição no GitHub.
+    '''
+    fig.show(renderer="png" if static else None)
 
 if __name__ == '__main__':
     from glob import glob
